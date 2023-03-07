@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            font-size: larger;
+        }
+        form{
+            border: solid black 2px;
+            padding: 50px 120px;
+            border-radius: 20px;
+            margin-top: 80px;
+            background-color: rgb(177, 240, 240);
+            box-shadow: 5px 5px 20px black;
+        }
+        input{
+            padding: 5px;
+            width: 300px;
+        }
+        label,input,a{
+            margin: 10px;
+        }
+        .formdata{
+            
+            padding: 30px;
+        }
+        button{
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+        a{
+            display: flex;
+            justify-content: right;
+            font-size: small;
+            align-items:start;
+        }
+        .newuser{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome User!</h1>
+    <div class="center">
+    <form action="" enctype="multipart/form-data">
+        <div class="formdata">
+            <div>
+                <label for="">Username/Email</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="">Password</label><br>
+                <input type="password">
+            </div>
+            <div>
+                <a href="">Forgot Password?</a>
+                <button>Login</button> 
+            </div>
+            <div class="newuser">
+                <a href="">Dont have an account? Create one</a>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>
