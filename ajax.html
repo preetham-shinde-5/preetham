@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <select name="cars" id="cars">
+            <option value="">select country</option>
+        </select>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Featured
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span id="active"></span></li>
+            <li class="list-group-item"><span id="C"></span></li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        </div>
+    <script>
+    
+            function ajaxGet(url){
+                const http = new XMLHttpRequest()
+                http.open('GET', url)
+                http.setRequestHeader('Content-Type', 'application/json')
+                http.send()
+                http.onload= function(){
+                const countries=JSON.parse(this.responseText);
+                console.log(countries)
+                countries.forEach(country=>{
+                    var country_name = country.Country
+                    var slug = country.Slug
+                    var iso = country. ISO2
+                    var id = document.getElementById("cars")
+                    var option = document.createElement("option")
+                    option.value = iso
+                    option.id = iso
+                    option.text = country_name
+                    id.appendChild(option)
+                })
+            } 
+            }
+            ajaxGet("https:api.covid19api.com/countries")
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
