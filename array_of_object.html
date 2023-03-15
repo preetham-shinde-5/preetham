@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <form action="" name="form" id="myform">
+        <div class="form-group">
+            <input type="text" name="category" id="category" placeholder="Enter category" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="sub-category"id="sub-category" placeholder="Enter sub-category"class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="name" id="name" placeholder="Enter name" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="discount" id="discount" placeholder="Enter discount" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="button" onclick="addProduct()" class="btn btn-success" value="Add product">
+        </div>
+        <div class="form-group">
+            <input type="button" onclick="generate_Report()" class="btn btn-success" value="Report">
+        </div>
+    </form>
+    <h3>Categories</h3>
+    <div id="Analytics">
+        
+    </div>
+    <h3>Sub-Categories</h3>
+    <div id="Analytics1">
+        
+    </div>
+</body>
+<script>
+    var products =[]
+    var count_category = {}
+    var count_subCategory ={}
+    function addProduct() {
+        var object = {}
+        var category = document.getElementById("category").value
+        var sub_category = document.getElementById("sub-category").value
+        var name = document.getElementById("name").value
+        var discount = document.getElementById("discount").value
+
+        setTimeout(resetForm,100);
+            function resetForm(){
+                document.getElementById('myform').reset()
+            }
+        if(count_category[category]==null){
+                count_category[category]=0
+            }
+        count_category[category]+=1
+        if(count_subCategory[sub_category]==null){
+            count_subCategory[sub_category]=0
+        }
+        count_subCategory[sub_category]+=1
+
+        var product = {name:name, discount:discount, category:category, sub_category:sub_category}
+        products.push(product)
+    }
+
+    function deleteItems(){
+        var items = document.querySelectorAll(".head_item")
+        items.forEach((item) => {
+            item.remove()
+        })
+    }
+
+    function generate_Report(){
+        deleteItems()
+        var element = document.getElementById("Analytics")
+        console.log(element)
+
+        for ( let v in count_category){
+            let freq = count_category[v]
+            var div = document.createElement('h6')
+            div.setAttribute("class","head_item")
+               // var hr = document.createElement('hr')
+                console.log(div)
+                div.innerText=v+" : "+freq
+        }
+        element.appendChild(div)
+
+        var element1 = document.getElementById("Analytics1")
+        for ( let v in count_subCategory){
+            let freq = count_subCategory[v]
+            var div = document.createElement('h6')
+            div.setAttribute("class","head_item")
+               // var hr = document.createElement('hr')
+                console.log(div)
+                div.innerText=v+" : "+freq
+        }
+        element1.appendChild(div)
+        //element.appendChild(hr)
+    }
+    // category
+    // subcategory
+    // name
+    // discount
+    // create a front end page
+    // create a report 
+    // circular reference problem problem in JSON
+</script>
+</html>
